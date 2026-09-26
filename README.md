@@ -4,7 +4,7 @@ Application Python interactive pour étudier, **sans FPGA ni logiciel propriéta
 
 Ce projet de simulation est indépendant du script expérimental Mac déjà présent dans le dossier parent. Les nombres affichés par l'application proviennent exclusivement des équations ci-dessous.
 
-## Démarrage
+## Démarrage sur macOS ou Linux
 
 Depuis le dossier `tipe-ppa` :
 
@@ -15,7 +15,39 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Sous Windows, l'activation est `.venv\Scripts\activate`. Pour lancer les tests :
+## Démarrage sur Windows
+
+Installer Python, puis ouvrir **PowerShell** dans le dossier `tipe-ppa`. Les commandes suivantes créent un environnement virtuel, installent les dépendances et lancent l'application :
+
+```powershell
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python -m streamlit run app.py
+```
+
+Dans l'**invite de commandes** (`cmd.exe`), utiliser plutôt :
+
+```bat
+py -m venv .venv
+.venv\Scripts\activate.bat
+python -m pip install -r requirements.txt
+python -m streamlit run app.py
+```
+
+Si PowerShell empêche l'activation, il est possible de lancer le projet sans modifier les paramètres de sécurité de Windows :
+
+```powershell
+py -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
+
+Streamlit affiche l'adresse locale à ouvrir dans le navigateur, généralement `http://localhost:8501`. Si la commande `py` est indisponible, utiliser `python` à sa place après avoir installé Python et l'avoir ajouté au `PATH`.
+
+## Tests
+
+Avec l'environnement virtuel activé, sur chaque système :
 
 ```bash
 python -m pytest -q
